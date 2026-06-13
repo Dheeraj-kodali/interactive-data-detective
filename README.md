@@ -3,9 +3,7 @@ title: Data Detective
 emoji: 🕵️‍♂️
 colorFrom: blue
 colorTo: indigo
-sdk: streamlit
-sdk_version: 1.30.0
-app_file: app.py
+sdk: docker
 pinned: false
 ---
 
@@ -75,15 +73,30 @@ Ensure you have **Python 3.8+** installed.
 
 ---
 
-## ☁️ Hugging Face Spaces Deployment
+## 🐳 Docker Container Execution
 
-This repository is pre-configured for deployment on **Hugging Face Spaces** as a Streamlit app. 
+This repository is configured with a production-ready `Dockerfile` and `.streamlit/config.toml` for containerized environments.
+
+### Local Docker Testing:
+1. **Build the Docker Image:**
+   ```bash
+   docker build -t data-detective .
+   ```
+2. **Run the Container locally:**
+   ```bash
+   docker run -p 7860:7860 data-detective
+   ```
+3. **Access the Application:** Open your browser and navigate to `http://localhost:7860`.
+
+---
+
+## ☁️ Hugging Face Spaces Docker Deployment
 
 ### Steps to Deploy:
 1. Create a new Space on [Hugging Face Spaces](https://huggingface.co/spaces).
-2. Select **Streamlit** as the SDK.
-3. Push this repository's contents to the Space's Git remote or drag-and-drop the files directly.
-4. The space will automatically install dependencies from `requirements.txt` and start the app from `app.py`.
+2. Enter your Space name and select **Docker** as the SDK.
+3. Push this repository's contents to the Space's Git remote or set up a Git remote push pipeline.
+4. Hugging Face Spaces will read the `Dockerfile`, build the image, and serve the application on port `7860` automatically.
 
 ---
 
