@@ -22,6 +22,9 @@ render_sidebar()
 
 # Page Navigation (integrated in Python sidebar)
 current_page = "📊 Explorer Dashboard"
+if 'df' not in st.session_state:
+    st.session_state.df = None
+
 if st.session_state.df is not None:
     st.sidebar.markdown('<hr style="border-color: rgba(255, 255, 255, 0.05); margin: 15px 0;" />', unsafe_allow_html=True)
     st.sidebar.markdown('<div style="font-size: 0.8rem; font-weight: 600; color: #94a3b8; margin-bottom: 5px;">🧭 Navigator</div>', unsafe_allow_html=True)
